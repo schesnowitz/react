@@ -6,9 +6,16 @@ function OurApp() {
     <>
       <Header />
       <Body />
+      <Vehicle color="red" type="Chev" speed="100" />
+      <Vehicle color="pink" type="Bike" speed="25" />
+      <Vehicle color="blue" type="Honda" speed="120" />
       <Footer />
     </>
   )
+}
+
+function Vehicle(props) {
+  return <li>A {props.color} {props.type} can go {props.speed} miles per hour.</li>
 }
 
 function Header() {
