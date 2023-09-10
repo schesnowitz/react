@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./some_css.css"
 
-
+const useState = React.useState
 
 const vehicles = [
   { color: "Red", type: "Subaru", speed: "123", id: 123456789 },
@@ -50,8 +50,13 @@ function Header() {
 }
 
 function Body() {
+  const [getTheTiem, setTheTime] = useState(new Date().toLocaleString())
+  // setTimeout(func_here, 1000)
+  setTimeout(function() {
+    setTheTime(new Date().toLocaleString())
+  }, 1000)
   return (
-  <p>The current time is {new Date().toLocaleString()}.</p>
+  <p>The current time is {getTheTiem}.</p>
   )
 }
 
@@ -65,6 +70,4 @@ function Footer() {
 
 
 const root = ReactDOM.createRoot(document.querySelector("#app"))
-setInterval(function() {
-  root.render(<OurApp />)
-}, 1000)
+root.render(<OurApp />)
