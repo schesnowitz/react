@@ -26,6 +26,7 @@ function OurApp() {
   return (
     <>
       <Header />
+      <LikeArea /> 
       <Body />
       <ul>
       {vehicles.map(function(vehicle) {
@@ -37,6 +38,31 @@ function OurApp() {
       )}
       </ul>
       <Footer />
+    </>
+  )
+}
+
+function LikeArea() {
+  const [likeCount, setLikeCount] = useState(0)
+  function increaseLikeHandeler() {
+    setLikeCount(function(value) {
+      return value + 1
+    })
+  }
+  function decreaseLikeHandeler() {
+    setLikeCount(value => {
+      if (value > 0) {
+        return value - 1;
+      } else {
+        return 0;
+      }
+    })
+  }
+  return ( 
+    <>
+    <button onClick={increaseLikeHandeler}>Like More</button> 
+    <button onClick={decreaseLikeHandeler}>Like Less</button>
+    <h2>This page has been liked {likeCount} times.</h2>
     </>
   )
 }
