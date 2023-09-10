@@ -32,7 +32,7 @@ function OurApp() {
       <VehicleForm setVehicles={setVehicles} />
       <ul>
       {vehicles.map(function(vehicle) {
-        return <Vehicle color={vehicle.color} type={vehicle.type} speed={vehicle.speed} key={vehicle.id} />
+        return <Vehicle setVehicles={setVehicles} id={vehicle.id} color={vehicle.color} type={vehicle.type} speed={vehicle.speed} key={vehicle.id} />
       })}
       {/*as arrow*/}
       <br />
@@ -96,7 +96,13 @@ function LikeArea() {
 }
 
 function Vehicle(props) {
-  return <li>A {props.color} {props.type} can go {props.speed} miles per hour.</li>
+  function handleDelete() {
+    props.setVehicles(prev => prev.filter(vehicle => vehicle.id != props.id))
+  }
+  return (<li>A {props.color} {props.type} can go {props.speed} miles per hour.
+  <button onClick={handleDelete}>Delete</button>
+  </li>
+  )
 }
 
 function Header() {
