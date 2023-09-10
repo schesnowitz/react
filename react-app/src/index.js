@@ -1,14 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./some_css.css"
+
+
+
+const vehicles = [
+  { color: "Red", type: "Subaru", speed: "123", id: 123456789 },
+  { color: "Magenta", type: "Toyota", speed: "325", id: 987654321 },
+  { color: "Yellow", type: "Ford", speed: "296", id: 123123123 },
+  { color: "White", type: "Ram", speed: "114", id: 456456456 },
+  { color: "Teal", type: "Chev", speed: "696", id: 789789789 }
+]
+
+
+
+
+
+
+
+
+
+
+
 function OurApp() {
   return (
     <>
       <Header />
       <Body />
-      <Vehicle color="red" type="Chev" speed="100" />
-      <Vehicle color="pink" type="Bike" speed="25" />
-      <Vehicle color="blue" type="Honda" speed="120" />
+      <ul>
+      {vehicles.map(function(vehicle) {
+        return <Vehicle color={vehicle.color} type={vehicle.type} speed={vehicle.speed} key={vehicle.id} />
+      })}
+      {/*as arrow*/}
+      <br />
+      {vehicles.map(vehicle => <Vehicle color={vehicle.color} type={vehicle.type} speed={vehicle.speed} key={vehicle.id} />
+      )}
+      </ul>
       <Footer />
     </>
   )
@@ -33,6 +60,10 @@ function Footer() {
     <small className='teal'>Copyright Footer Text</small>
   )
 }
+
+
+
+
 const root = ReactDOM.createRoot(document.querySelector("#app"))
 setInterval(function() {
   root.render(<OurApp />)
